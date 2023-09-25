@@ -1,0 +1,16 @@
+nav {
+    display: inline-flex;
+    align-items: flex-start;
+    flex-direction: column;
+    height: 100vh;
+    padding: 20px;
+    gap: 30px;
+    position: fixed;
+    background: var(--Darkest, #0A0903);
+}
+
+nav>a>img {
+    width: 20px;
+    height: 20px;
+    user-select: none;
+}
