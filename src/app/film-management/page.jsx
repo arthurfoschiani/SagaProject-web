@@ -18,8 +18,15 @@ import FilmCard from '@/components/film-card/film-card';
 export default function FilmManagement() {
   const [showModal, setShowModal] = useState(false);
   
-  const openModal = () => setShowModal(true);
-  const closeModal = () => setShowModal(false);
+  const openModal = () => {
+    document.body.classList.add('no-scroll');
+    setShowModal(true);
+  };
+  
+  const closeModal = () => {
+    document.body.classList.remove('no-scroll');
+    setShowModal(false);
+  };
 
   const handleCloseModal = (e) => {
     if (e.target.className === "background") {

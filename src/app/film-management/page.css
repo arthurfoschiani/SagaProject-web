@@ -45,13 +45,13 @@ section>article {
 .banner-filme {
     background: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.00) 100%), url('/assets/filmes/BrenéBrown.jpg'), lightgray 50%;
     width: 90%;
-    height: 70vh;
+    height: auto;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
 
     display: flex;
-    padding: 24px 50px;
+    padding: 32px 50px;
     justify-content: space-between;
     align-items: center;
 }
@@ -102,4 +102,8 @@ section>article {
     height: 32px;
     width: 32px;
     cursor: pointer;
+}
+
+.no-scroll {
+    overflow: hidden;
 }
