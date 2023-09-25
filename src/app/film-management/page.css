@@ -40,12 +40,39 @@ section>article {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    animation: opacityIn 0.2s ease forwards;
+}
+
+.background.exit {
+    animation: opacityOut 0.2s ease forwards;
+}
+
+@keyframes opacityIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes opacityOut {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
 }
 
 .banner-filme {
     background: linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.00) 100%), url('/assets/filmes/BrenéBrown.jpg'), lightgray 50%;
     width: 90%;
     height: auto;
+    min-height: 70vh;
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -54,6 +81,32 @@ section>article {
     padding: 32px 50px;
     justify-content: space-between;
     align-items: center;
+
+    animation: slideIn 0.2s ease forwards;
+}
+
+.banner-filme.exit {
+    animation: slideOut 0.2s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-100%);
+    }
 }
 
 .banner-filme>.infos-filme {

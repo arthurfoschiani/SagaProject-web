@@ -17,9 +17,11 @@ import FilmCard from '@/components/film-card/film-card';
 
 export default function FilmManagement() {
   const [showModal, setShowModal] = useState(false);
+  const [exit, setExit] = useState(false);
   
   const openModal = () => {
     document.body.classList.add('no-scroll');
+    setExit(false);
     setShowModal(true);
   };
   
@@ -29,8 +31,9 @@ export default function FilmManagement() {
   };
 
   const handleCloseModal = (e) => {
-    if (e.target.className === "background") {
-      closeModal();
+    if (e.target.className.includes("background")) {
+      setExit(true);
+      setTimeout(() => setShowModal(false), 200);
     }
   };
 
@@ -61,8 +64,8 @@ export default function FilmManagement() {
         </article>
       </section>
       {showModal && (
-        <div className="background" onClick={(e) => handleCloseModal(e)}>
-          <div className="banner-filme">
+        <div className={`background ${exit ? 'exit' : ''}`} onClick={(e) => handleCloseModal(e)}>
+          <div className={`banner-filme ${exit ? 'exit' : ''}`}>
             <div className="infos-filme">
               <h3>BRENÉ BROWN</h3>
               <p className="genero">Suspense</p>
