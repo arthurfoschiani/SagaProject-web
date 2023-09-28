@@ -7,16 +7,16 @@ import iconUser from 'public/assets/icons/icon_user.svg';
 import Link from "next/link";
 import Image from "next/image";
 
-import './navbar.css';
+//import './navbar.css';
 
 export default function Navbar() {
     return (
-        <nav className="navbar">
-            <Link href="/"><Image src={Logo} alt="" /></Link>
-            <Link href="/search"><Image src={iconSearch} alt="" /></Link>
-            <Link href="/film-management"><Image src={iconFilm} alt="" /></Link>
-            <Link href="/favoritos"><Image src={iconStar} alt="" /></Link>
-            <Link href="/perfil"><Image src={iconUser} alt="" /></Link>
+        <nav className="fixed h-screen bg-#0A0903 p-10 flex flex-col items-start gap-7 mr-24">
+            <Link href="/"><Image src={Logo} alt="" width={20} height={20} /></Link>
+            <Link href="/search"><Image src={iconSearch} alt="" width={20} height={20} /></Link>
+            <Link href="/film-management"><Image src={iconFilm} alt="" width={20} height={20} /></Link>
+            <Link href="/favoritos"><Image src={iconStar} alt="" width={20} height={20} /></Link>
+            <Link href="/perfil"><Image src={iconUser} alt="" width={20} height={20} /></Link>
         </nav>
     )
 }

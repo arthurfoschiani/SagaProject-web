@@ -1,9 +1,7 @@
 .filme {
     width: 319px;
     height: 182px;
-    
     border-radius: 4px;
-    
     display: flex;
     justify-content: center;
     align-items: flex-end;
