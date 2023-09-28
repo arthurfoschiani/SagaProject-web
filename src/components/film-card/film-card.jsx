@@ -17,8 +17,8 @@ export default function FilmCard({ image, onclick }) {
     }
 
     return (
-        <div className="filme" style={style} onClick={onclick}>
-            <Image src={iconChevronDown} alt="" />
+        <div className="w-80 h-44 rounded-lg flex flex-col justify-end pb-2 cursor-pointer" style={style} onClick={onclick}>
+            <Image src={iconChevronDown} alt="" width={20} height={20}/>
         </div>
     )
 }

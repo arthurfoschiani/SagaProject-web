@@ -1,35 +1,35 @@
-main {
-    display: flex;
-}
+/*main {*/
+/*    display: flex;*/
+/*}*/
 
-section {
-    margin-left: 60px;
-    width: calc(100% - 60px);
-    min-height: 100vh;
-}
+/*section {*/
+/*    margin-left: 60px;*/
+/*    width: calc(100% - 60px);*/
+/*    min-height: 100vh;*/
+/*}*/
 
-section>article {
-    margin: 5vh 80px 0;
-}
+/*section>article {*/
+/*    margin: 5vh 80px 0;*/
+/*}*/
 
-.header {
-    display: flex;
-    justify-content: space-between;
-}
+/*.header {*/
+/*    display: flex;*/
+/*    justify-content: space-between;*/
+/*}*/
 
-.header>h2 {
-    color: var(--White, #FFF);
-    font-size: 32px;
-    font-weight: 500;
-}
+/*.header>h2 {*/
+/*    color: var(--White, #FFF);*/
+/*    font-size: 32px;*/
+/*    font-weight: 500;*/
+/*}*/
 
-.lista_filmes {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 5vh;
-    gap: 40px
-}
+/*.lista_filmes {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*    justify-content: space-between;*/
+/*    margin-top: 5vh;*/
+/*    gap: 40px*/
+/*}*/
 
 .background {
     position: absolute;

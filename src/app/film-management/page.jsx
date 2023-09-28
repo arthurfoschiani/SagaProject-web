@@ -38,18 +38,18 @@ export default function FilmManagement() {
   };
 
   return (
-    <main>
+    <main className="flex">
       <Navbar/>
-      <section>
-        <article>
-          <div className="header">
-            <h2>Recentemente adicionados</h2>
+      <section className="ml-24 mr-20 w-full sm:w-[calc(100%-60px)] min-h-screen pl-14">
+        <article className="mt-[5vh] mx-55">
+          <div className="flex justify-between header">
+            <h2 className="text-White text-2xl font-semibold">Recentemente adicionados</h2>
             <Button href="/new-film">
               <Image src={iconAdd} alt="" />
               Novo filme
             </Button>
           </div>
-          <div className="lista_filmes">
+          <div className="flex flex-wrap justify-between mt-8 gap-20">
             <FilmCard image="AEraDosDados" onclick={openModal} />
             <FilmCard image="BillGates" onclick={openModal} />
             <FilmCard image="BlackMirror" onclick={openModal} />
@@ -67,19 +67,19 @@ export default function FilmManagement() {
         <div className={`background ${exit ? 'exit' : ''}`} onClick={(e) => handleCloseModal(e)}>
           <div className={`banner-filme ${exit ? 'exit' : ''}`}>
             <div className="infos-filme">
-              <h3>BRENÉ BROWN</h3>
-              <p className="genero">Suspense</p>
-              <p className="ano">2019</p>
-              <p className="sinopse">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi.</p>
-              <p className="diretor">Diretor: Todd Burns</p>
+              <h3 className="text-White font-anton text-5xl font-normal">BRENÉ BROWN</h3>
+              <p className="genero text-gray-400 text-sm">Suspense</p>
+              <p className="ano text-gray-400 text-sm">2019</p>
+              <p className="sinopse text-White text-base font-light">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi.</p>
+              <p className="diretor text-White text-sm">Diretor: Todd Burns</p>
               <Button>
-                <Image src={iconPlay} alt="" />
+                <Image src={iconPlay} alt="" width={20} height={20} />
                 Assistir trailer
               </Button>
             </div>
             <div className="icons-filme">
-              <Image src={iconEdit} alt="" />
-              <Image src={iconTrash} alt="" />
+              <Image src={iconEdit} alt="" width={32} height={32} />
+              <Image src={iconTrash} alt="" width={32} height={32} />
             </div>
           </div>
         </div>
