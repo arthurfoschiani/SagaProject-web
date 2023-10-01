@@ -4,7 +4,7 @@ import iconChevronDown from 'public/assets/icons/icon_chevron_down.svg';
 
 import './film-card.css';
 
-export default function FilmCard({ image, onclick }) {
+export default function FilmCard({ image, onclick, filme }) {
 
     let caminhoImagem = '/assets/filmes/BrenéBrown.jpg';
 

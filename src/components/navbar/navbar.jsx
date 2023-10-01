@@ -14,7 +14,7 @@ export default function Navbar() {
         <nav className="navbar">
             <Link href="/"><Image src={Logo} alt="" /></Link>
             <Link href="/search"><Image src={iconSearch} alt="" /></Link>
-            <Link href="/film-management"><Image src={iconFilm} alt="" /></Link>
+            <Link href="/films"><Image src={iconFilm} alt="" /></Link>
             <Link href="/favoritos"><Image src={iconStar} alt="" /></Link>
             <Link href="/perfil"><Image src={iconUser} alt="" /></Link>
         </nav>

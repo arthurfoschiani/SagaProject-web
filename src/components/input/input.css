@@ -1,0 +1,14 @@
+.button {
+    display: inline-flex;
+    padding: 5px 20px;
+    align-items: center;
+    gap: 12px;
+
+    border-radius: 5px;
+    border: 1px solid var(--Feature, #ff430a);
+
+    color: var(--Feature, #FF430A);
+    font-size: 15px;
+    font-weight: 300;
+    width: fit-content;
+}
