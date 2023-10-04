@@ -1,14 +1,28 @@
-.button {
-    display: inline-flex;
-    padding: 5px 20px;
-    align-items: center;
+.input-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
     gap: 12px;
+    width: 100%;
+}
 
+.input-form>p {
+    color: var(--White, #FFF);
+    font-size: 18px;
+    font-weight: 500;
+    width: 100%;
+}
+
+.input-form>input, .input-form>textarea {
+    display: flex;
+    padding: 12px 10px;
+    align-items: center;
+    color: #888;
+    font-size: 14px;
+    font-weight: 500;
     border-radius: 5px;
-    border: 1px solid var(--Feature, #ff430a);
-
-    color: var(--Feature, #FF430A);
-    font-size: 15px;
-    font-weight: 300;
-    width: fit-content;
+    background: #E9E9E9;
+    width: 100%;
+    border: none;
 }

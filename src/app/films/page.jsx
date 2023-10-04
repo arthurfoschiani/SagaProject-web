@@ -18,7 +18,7 @@ import FilmCard from '@/components/film-card/film-card';
 async function carregarDados() {
   const url = "http://localhost:8080/filmes"
   try {
-    const resp = await fetch(url, { mode: 'cors' });
+    const resp = await fetch(url);
 
     if (resp.status !== 200) {
       alert("Erro ao buscar dados dos filmes");
@@ -32,8 +32,7 @@ async function carregarDados() {
   }
 }
 
-export default function Fims() {
-  ;
+export default function Films() {
   const [showModal, setShowModal] = useState(false);
   const [exit, setExit] = useState(false);
   const [filmes, setFilmes] = useState([]);
@@ -52,9 +51,9 @@ export default function Fims() {
       setExit(true);
       document.body.classList.remove('no-scroll');
       setTimeout(() => {
-        setShowModal(false), 200
-        setFilmeSelecionado(null);
-      });
+        setShowModal(false)
+        setFilmeSelecionado(null)
+      }, 200);
     }
   };
 
@@ -73,7 +72,7 @@ export default function Fims() {
     if (caminhoBanner) {
       caminhoImagem = '/assets/filmes/' + caminhoBanner + '.jpg';
     }
-  
+
     return {
       background: `linear-gradient(90deg, #000 0%, rgba(0, 0, 0, 0.00) 100%), url('${caminhoImagem}'), lightgray 50%`,
       backgroundRepeat: 'no-repeat',

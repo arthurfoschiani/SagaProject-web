@@ -1,11 +1,16 @@
 import Link from "next/link";
 
-import './button.css';
+import './input.css';
 
-export default function Button({children, ...props}) {
+export default function Button({ label, typeInput = "input", ...props }) {
     return (
-        <Link href="#" {...props} className="button">
-            {children}
-        </Link>
+        <div className="input-form">
+            <p>{label}</p>
+            {typeInput === "input" ?
+                <input {...props} />
+                :
+                <textarea {...props} />
+            }
+        </div>
     )
 }
