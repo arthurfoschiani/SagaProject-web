@@ -23,11 +23,38 @@ section>article {
     font-weight: 500;
 }
 
-.new-film>form {
+.new-film>.content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.new-film>.content>form {
     margin: 5vh 0;
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 4vh;
+}
+
+.box-slide-image {
+    display: flex;
+    width: 40%;
+    height: 30vh;
+    padding: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 30vh;
+
+    border-radius: 10px;
+    border: 2px dashed #FF430A;
+}
+
+.box-slide-image>p {
+    color: var(--Feature, #FF430A);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
 }

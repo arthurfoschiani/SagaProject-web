@@ -97,16 +97,6 @@ export default function Films() {
           </div>
           <div className="lista_filmes">
             {filmes.map(filme => <FilmCard key={filme.id} image={filme?.caminhoBanner} onclick={() => openModal(filme)} />)}
-            <FilmCard image={filmes[0]?.caminhoBanner} onclick={openModal} />
-            <FilmCard image="BillGates" onclick={openModal} />
-            <FilmCard image="BlackMirror" onclick={openModal} />
-            <FilmCard image="BrenéBrown" onclick={openModal} />
-            <FilmCard image="ComoFicarRico" onclick={openModal} />
-            <FilmCard image="CorpoHumano" onclick={openModal} />
-            <FilmCard image="ExplicandoDinheiro" onclick={openModal} />
-            <FilmCard image="ExplicandoAMente" onclick={openModal} />
-            <FilmCard image="HeadSpace" onclick={openModal} />
-            <FilmCard image="MinimalismoJa" onclick={openModal} />
           </div>
         </article>
       </section>
