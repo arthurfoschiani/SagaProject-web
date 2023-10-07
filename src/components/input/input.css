@@ -9,9 +9,15 @@
 
 .input-form>p {
     color: var(--White, #FFF);
-    font-size: 18px;
+    font-size: 1em;
     font-weight: 500;
     width: 100%;
+}
+
+.input-form>span {
+    font-size: 0.8em;
+    color: #c10808;
+    margin-top: -5px;
 }
 
 .input-form>input, .input-form>textarea {
@@ -19,10 +25,11 @@
     padding: 12px 10px;
     align-items: center;
     color: #888;
-    font-size: 14px;
+    font-size: 0.8em;
     font-weight: 500;
     border-radius: 5px;
     background: #E9E9E9;
     width: 100%;
     border: none;
+    color: #212121;
 }

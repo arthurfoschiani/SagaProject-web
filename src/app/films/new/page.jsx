@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react";
+
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 
@@ -16,12 +18,14 @@ import toast from "react-hot-toast";
 
 export default function FilmManagement() {
   const { push } = useRouter();
+  const [messages, setMessages] = useState([]);
 
   async function onSubmit(formData) {
     const resp = await create(formData)
 
     if (resp?.error) {
-      toast.error(resp.error)
+      toast.error(resp.error);
+      setMessages(resp.messages)
       return
     }
 
@@ -38,14 +42,14 @@ export default function FilmManagement() {
           </div>
           <div className="content">
             <form action={onSubmit}>
-              <Input name="titulo" label="Título do filme" placeholder="Harry Potter" />
-              <Input name="sinopse" label="Sinopse" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi." typeInput="textearea" />
-              <Input name="diretor" label="Diretor" placeholder="Harry Potter" />
-              <Input name="duracao" label="Duração" placeholder="2h 14m" />
-              <Input name="dataEstreia" label="Data de Estreia" placeholder="21/12/2003" type="date" />
-              <Input name="caminhoBanner" label="Caminho da imagem" placeholder="harrypotter" />
-              <Input name="faixaEtaria" label="Faixa Etária" placeholder="18" type="number" />
-              <Input name="idCategoria" label="Categoria" placeholder="Aventura" type="number" />
+              <Input name="titulo" label="Título do filme" placeholder="Harry Potter" erro={messages?.find(m => m.field === "titulo")?.message} />
+              <Input name="sinopse" label="Sinopse" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi." typeInput="textearea" erro={messages?.find(m => m.field === "sinopse")?.message} />
+              <Input name="diretor" label="Diretor" placeholder="Harry Potter" erro={messages?.find(m => m.field === "diretor")?.message} />
+              <Input name="duracao" label="Duração" placeholder="2h 14m" erro={messages?.find(m => m.field === "duracao")?.message} />
+              <Input name="dataEstreia" label="Data de Estreia" placeholder="21/12/2003" type="date" erro={messages?.find(m => m.field === "dataEstreia")?.message} />
+              <Input name="caminhoBanner" label="Caminho da imagem" placeholder="harrypotter" erro={messages?.find(m => m.field === "caminhoBanner")?.message} />
+              <Input name="faixaEtaria" label="Faixa Etária" placeholder="18" type="number" erro={messages?.find(m => m.field === "faixaEtaria")?.message} />
+              <Input name="idCategoria" label="Categoria" placeholder="Aventura" type="number" erro={messages?.find(m => m.field === "idCategoria")?.message} />
               <Button type="button">
                 <Image src={iconAdd} alt="" />
                 Adicionar
