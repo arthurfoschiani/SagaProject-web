@@ -15,7 +15,7 @@ export default function FilmCard({ filme }) {
 
     const defaultImagePath = '/assets/filmes/BrenéBrown.jpg';
 
-    const getFilmImagePath = (filme) => filme ? `/assets/filmes/${filme.caminhoBanner}.jpg` : defaultImagePath;
+    const getFilmImagePath = (filme) => filme ? `/assets/filmes/${filme.caminhoBanner}` : defaultImagePath;
 
     const imagePath = getFilmImagePath(filme);
 
