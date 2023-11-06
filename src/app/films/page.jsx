@@ -40,7 +40,7 @@ export default async function Films() {
             </Button>
           </div>
           <div className="lista_filmes">
-            {filmes.map(filme => <FilmCard key={filme.id} filme={filme} />)}
+            {filmes.content.map(filme => <FilmCard key={filme.id} filme={filme} />)}
           </div>
         </article>
       </section>

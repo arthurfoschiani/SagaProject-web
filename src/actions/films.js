@@ -21,9 +21,9 @@ export async function create(data){
             error: "Erro ao cadastrar",
             messages
         }
-    } 
+    }
 
-    revalidatePath("/films")
+    await revalidatePath("/films")
 }
 
 export async function destroy(id){
@@ -37,7 +37,7 @@ export async function destroy(id){
         return { error: "Erro ao apagar filme" }
     }
     
-    revalidatePath("/films")
+    await revalidatePath("/films")
 
 }
 
@@ -66,5 +66,5 @@ export async function update(Filme){
         return {error: "Erro ao alterar Filme"}
     }
 
-    revalidatePath("/films")
+    await revalidatePath("/films")
 }
