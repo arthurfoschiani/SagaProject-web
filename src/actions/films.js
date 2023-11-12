@@ -1,12 +1,23 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-const url = "http://localhost:8080/filmes"
+const url = `${process.env.NEXT_PUBLIC_API_URL}/filmes`
 
-export async function create(data){
+export async function carregarDados() {
+    const resp = await fetch(url);
+
+    if (resp.status !== 200) {
+        alert("Erro ao buscar dados dos filmes");
+        return
+    }
+
+    return await resp.json();
+}
+
+export async function create(data) {
 
     const options = {
-        method: "POST", 
+        method: "POST",
         body: JSON.stringify(Object.fromEntries(data)),
         headers: {
             "Content-Type": "application/json"
@@ -26,34 +37,34 @@ export async function create(data){
     await revalidatePath("/films")
 }
 
-export async function destroy(id){
+export async function destroy(id) {
     const options = {
         method: "DELETE"
     }
-    
+
     const resp = await fetch(url + "/" + id, options)
-    
-    if (resp.status !== 204){
+
+    if (resp.status !== 204) {
         return { error: "Erro ao apagar filme" }
     }
-    
+
     await revalidatePath("/films")
 
 }
 
-export async function get(id){
+export async function get(id) {
     const resp = await fetch(url + "/" + id)
 
-    if (resp.status !== 200){
-        return { error: "Filme não encontrado"}
+    if (resp.status !== 200) {
+        return { error: "Filme não encontrado" }
     }
 
     return await resp.json()
 }
 
-export async function update(Filme){
+export async function update(Filme) {
     const options = {
-        method: "PUT", 
+        method: "PUT",
         body: JSON.stringify(Filme),
         headers: {
             "Content-Type": "application/json"
@@ -62,8 +73,8 @@ export async function update(Filme){
 
     const resp = await fetch(url + "/" + Filme.id, options)
 
-    if (resp.status !== 200){
-        return {error: "Erro ao alterar Filme"}
+    if (resp.status !== 200) {
+        return { error: "Erro ao alterar Filme" }
     }
 
     await revalidatePath("/films")

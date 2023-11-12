@@ -7,21 +7,7 @@ import iconAdd from 'public/assets/icons/icon_add.svg';
 import Navbar from '@/components/navbar/navbar';
 import Button from '@/components/button/button';
 import FilmCard from '@/components/film-card/film-card';
-
-async function carregarDados() {
-  // const randomQueryParam = `cacheBuster=${Math.random()}`;
-  // const url = `http://localhost:8080/filmes?${randomQueryParam}`;
-  const url = "http://localhost:8080/filmes"
-
-  const resp = await fetch(url);
-
-  if (resp.status !== 200) {
-    alert("Erro ao buscar dados dos filmes");
-    return
-  }
-
-  return await resp.json();
-}
+import { carregarDados } from "@/actions/films";
 
 export default async function Films() {
 
