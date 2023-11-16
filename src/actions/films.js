@@ -14,15 +14,21 @@ export async function carregarDados() {
     return await resp.json();
 }
 
-export async function create(data) {
+export async function create(data, categoriaId) {
+
+    const formData = Object.fromEntries(data);
+
+    formData.categoria = { id: categoriaId };
 
     const options = {
         method: "POST",
-        body: JSON.stringify(Object.fromEntries(data)),
+        body: JSON.stringify(formData),
         headers: {
             "Content-Type": "application/json"
         }
     }
+
+    console.log(options)
 
     const resp = await fetch(url, options)
 

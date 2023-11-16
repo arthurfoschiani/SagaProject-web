@@ -32,11 +32,25 @@ export default function FormEdit({ filme }) {
 
 
     function handleFieldChange(field, value) {
-        setFilmeEdit({
-            ...filmeEdit,
-            [field]: value
-        })
+        const fieldParts = field.split(".");
+    
+        if (fieldParts.length === 1) {
+            setFilmeEdit({
+                ...filmeEdit,
+                [field]: value
+            });
+        } else {
+            setFilmeEdit(prevState => {
+                let updatedField = { ...prevState[fieldParts[0]] };
+                updatedField[fieldParts[1]] = value;
+                return {
+                    ...prevState,
+                    [fieldParts[0]]: updatedField
+                };
+            });
+        }
     }
+    
 
     return (
         <div className="content">
@@ -48,7 +62,7 @@ export default function FormEdit({ filme }) {
                 <Input value={filmeEdit.dataEstreia} onChange={(e) => handleFieldChange("dataEstreia", e.target.value)} name="dataEstreia" label="Data de Estreia" placeholder="21/12/2003" type="date" />
                 <Input value={filmeEdit.caminhoBanner} onChange={(e) => handleFieldChange("caminhoBanner", e.target.value)} name="caminhoBanner" label="Caminho da imagem" typeInput="select" options={imagensBanner} />
                 <Input value={filmeEdit.faixaEtaria} onChange={(e) => handleFieldChange("faixaEtaria", e.target.value)} name="faixaEtaria" label="Faixa Etária" placeholder="18" type="number" />
-                <Input value={filmeEdit.idCategoria} onChange={(e) => handleFieldChange("idCategoria", e.target.value)} name="idCategoria" label="Categoria" placeholder="Aventura" type="number" />
+                <Input value={filmeEdit.categoria.id} onChange={(e) => handleFieldChange("categoria.id", e.target.value)} name="idCategoria" label="Categoria" placeholder="2" type="number" />
                 <Button type="button">
                     <Image src={iconAdd} alt="" />
                     Atualizar

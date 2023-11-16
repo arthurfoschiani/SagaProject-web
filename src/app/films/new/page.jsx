@@ -21,13 +21,18 @@ export default function FilmManagement() {
   const { push } = useRouter();
   const [messages, setMessages] = useState([]);
   const [selectedImage, setSelectedImage] = useState('');
+  const [selectedCategoryId, setSelectedCategoryId] = useState('');
 
   const handleImageChange = (e) => {
     setSelectedImage(e.target.value);
   };
 
+  const handleCategoryChange = (event) => {
+    setSelectedCategoryId(event.target.value);
+  };
+
   async function onSubmit(formData) {
-    const resp = await create(formData)
+    const resp = await create(formData, selectedCategoryId);
 
     if (resp?.error) {
       toast.error(resp.error);
@@ -48,14 +53,14 @@ export default function FilmManagement() {
           </div>
           <div className="content">
             <form action={onSubmit}>
-              <Input name="titulo" label="Título do filme" placeholder="Harry Potter" erro={messages?.find(m => m.field === "titulo")?.message} />
-              <Input name="sinopse" label="Sinopse" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi." typeInput="textarea" erro={messages?.find(m => m.field === "sinopse")?.message} />
-              <Input name="diretor" label="Diretor" placeholder="Harry Potter" erro={messages?.find(m => m.field === "diretor")?.message} />
-              <Input name="duracao" label="Duração" placeholder="2h 14m" erro={messages?.find(m => m.field === "duracao")?.message} />
-              <Input name="dataEstreia" label="Data de Estreia" placeholder="21/12/2003" type="date" erro={messages?.find(m => m.field === "dataEstreia")?.message} />
+              <Input name="titulo" label="Título do filme" placeholder="Harry Potter" erro={Object.values(messages).find(m => m.field === "titulo")?.message} />
+              <Input name="sinopse" label="Sinopse" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eget ligula eu lectus lobortis condimentum. Aliquam nonummy auctor massa. Pellentesque habitant morbi." typeInput="textarea" erro={Object.values(messages).find(m => m.field === "sinopse")?.message} />
+              <Input name="diretor" label="Diretor" placeholder="Harry Potter" erro={Object.values(messages).find(m => m.field === "diretor")?.message} />
+              <Input name="duracao" label="Duração" placeholder="2h 14m" erro={Object.values(messages).find(m => m.field === "duracao")?.message} />
+              <Input name="dataEstreia" label="Data de Estreia" placeholder="21/12/2003" type="date" erro={Object.values(messages).find(m => m.field === "dataEstreia")?.message} />
               <Input name="caminhoBanner" label="Caminho da imagem" typeInput="select" value={selectedImage} onChange={handleImageChange} options={imagensBanner} />
-              <Input name="faixaEtaria" label="Faixa Etária" placeholder="18" type="number" erro={messages?.find(m => m.field === "faixaEtaria")?.message} />
-              <Input name="idCategoria" label="Categoria" placeholder="Aventura" type="number" erro={messages?.find(m => m.field === "idCategoria")?.message} />
+              <Input name="faixaEtaria" label="Faixa Etária" placeholder="18" type="number" erro={Object.values(messages).find(m => m.field === "faixaEtaria")?.message} />
+              <Input name="idCategoria" label="Categoria" placeholder="2" type="number" value={selectedCategoryId} onChange={handleCategoryChange} erro={Object.values(messages).find(m => m.field === "categoria")?.message} />
               <Button type="button">
                 <Image src={iconAdd} alt="" />
                 Adicionar
