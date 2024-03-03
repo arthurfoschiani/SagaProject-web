@@ -8,7 +8,7 @@
     border: 1px solid var(--Feature, #ff430a);
 
     color: var(--Feature, #FF430A);
-    font-size: 15px;
-    font-weight: 300;
+    font-size: 18px;
+    font-weight: 500;
     width: fit-content;
 }

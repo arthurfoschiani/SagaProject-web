@@ -2,12 +2,12 @@ import Link from "next/link";
 
 import './input.css';
 
-export default function Button({ label, typeInput = "input", options = [], erro, ...props }) {
+export default function Input({ label, register=()=>{}, nameSpace, typeInput = "input", options = [], erro, ...props }) {
     return (
         <div className="input-form">
             <p>{label}</p>
             {typeInput === "input" && (
-                <input {...props} />
+                <input {...register(nameSpace)} {...props} />
             )}
             {typeInput === "textarea" && (
                 <textarea {...props} />
