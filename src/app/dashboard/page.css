@@ -1,0 +1,14 @@
+.page {
+    display: flex;
+}
+.principal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: -webkit-fill-available;
+
+    h2 {
+        font-size: 48px;
+        font-weight: 500;
+    }
+}

@@ -5,7 +5,6 @@ nav {
     height: 100vh;
     padding: 20px;
     gap: 30px;
-    position: fixed;
     background: var(--Darkest, #0A0903);
 }
 

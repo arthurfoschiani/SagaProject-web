@@ -1,29 +1,32 @@
 "use client"
 
-import { apiLogin } from "@/actions/user";
+import { apiLogin, apiLogout } from "@/actions/user";
 
 const { createContext, useState } = require("react");
 
 export const AuthContext = createContext({})
 
-export function AuthProvider({children}){
-    const [ user, setUser ] = useState(null)
+export function AuthProvider({ children }) {
+    const [user, setUser] = useState(null)
 
-    const login = (email, senha) => {
-        if(email === "arthur@email.com"){
-            setUser({
-                email,
-                name: email
-            })
-            apiLogin(email, senha)
-        }
+    const login = async (email, senha) => {
+        const res = await apiLogin(email, senha);
+
+        if (res?.erro) return res;
+
+        setUser({
+            email
+        })
     }
 
-    const logout = () => setUser(null)
+    const logout = () => {
+        apiLogout();
+        setUser(null);
+    }
 
 
     return (
-        <AuthContext.Provider value={{user, login, logout}}>
+        <AuthContext.Provider value={{ user, login, logout }}>
             {children}
         </AuthContext.Provider>
     )

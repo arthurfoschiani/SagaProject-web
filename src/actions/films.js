@@ -1,14 +1,21 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
+import { cookies } from "next/headers";
 const url = `${process.env.NEXT_PUBLIC_API_URL}/filmes`
+const token = cookies().get(process.env.JWT_COOKIE_KEY)?.value;
 
 export async function carregarDados() {
-    const resp = await fetch(url);
+    const options = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+    const resp = await fetch(url, options);
 
     if (resp.status !== 200) {
-        alert("Erro ao buscar dados dos filmes");
-        return
+        throw new Error(`Erro ao buscar dados dos filmes (${resp.status})`);
     }
 
     return await resp.json();
@@ -24,11 +31,10 @@ export async function create(data, categoriaId) {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         }
     }
-
-    console.log(options)
 
     const resp = await fetch(url, options)
 
@@ -43,9 +49,12 @@ export async function create(data, categoriaId) {
     await revalidatePath("/films")
 }
 
-export async function destroy(id) {
+export async function destroy(id) {    
     const options = {
-        method: "DELETE"
+        method: "DELETE",
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
     }
 
     const resp = await fetch(url + "/" + id, options)
@@ -59,7 +68,13 @@ export async function destroy(id) {
 }
 
 export async function get(id) {
-    const resp = await fetch(url + "/" + id)
+    const options = {
+        headers: {
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
+    const resp = await fetch(url + "/" + id, options)
 
     if (resp.status !== 200) {
         return { error: "Filme não encontrado" }
@@ -73,7 +88,8 @@ export async function update(Filme) {
         method: "PUT",
         body: JSON.stringify(Filme),
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
         }
     }
 
